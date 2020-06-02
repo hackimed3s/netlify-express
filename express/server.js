@@ -13,6 +13,15 @@ router.get('/', (req, res) => {
 });
 router.get('/another', (req, res) => res.json({ route: req.originalUrl }));
 router.post('/', (req, res) => res.json({ postBody: req.body }));
+router.get('/redirect', (req, res) => {
+    res.redirect('https://morganroman.requestcatcher.com/test');
+});
+
+router.post('/redirect', (req, res) => {
+    res.redirect('https://morganroman.requestcatcher.com/test');
+});
+
+
 
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
